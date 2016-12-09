@@ -6,13 +6,13 @@
 }
 .morph-carousel__separator {
   position: absolute;
-  top: 5px;
-  bottom: 5px;
+  top: 36px;
+  bottom: 25px;
   left: 50%;
   width: 60px;
   margin-left: -30px;
-  border-left: 1px solid #6AF591;
-  border-right: 1px solid #6AF591;
+  border-left: 1px solid rgb(246, 84, 67);
+  border-right: 1px solid rgb(246, 84, 67);
 }
 .morph-carousel__shadow {
   top: 0;
@@ -29,4 +29,11 @@
     rgba(255, 255, 255, 0) 55%,
     rgba(255, 255, 255, 0.7) 85%,
     rgba(245, 244, 244, 0.95) 100%);
+}
+
+.morph-carousel__item .day{
+  text-transform: uppercase;
+  font-family: roboto-r;
+  font-size: 10px;
+  padding-bottom: 8px;
 }
