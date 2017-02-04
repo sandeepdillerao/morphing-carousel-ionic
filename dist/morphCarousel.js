@@ -138,11 +138,14 @@ angular.module('morphCarousel', [])
                             angle += direction * endAngle * (new Date() - last) / speed;
                             last = +new Date();
                             currentAngle = carouselRotateAngle + angle;
-                            if(Math.abs(currentAngle) > maxRotateAngle || currentAngle > 0)
-                                return;
+
+                            //KC
+                            if(Math.abs(currentAngle) > maxRotateAngle) currentAngle = -maxRotateAngle;
+                            if(currentAngle > 0) currentAngle = 0;
+
                             setRotation(currentAngle);
 
-                            if (Math.abs(angle) < endAngle) {
+                            if (Math.abs(angle) < endAngle /*KC */&& Math.abs(currentAngle) != maxRotateAngle && Math.abs(currentAngle) != 0) {
                                 (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
                             } else {
                                 var itemIndex;
