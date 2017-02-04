@@ -72,11 +72,13 @@ angular.module('morphCarousel', [])
                     }
 
                     $ionicGesture.on('drag', function (ev) {
-                        if(Math.abs(currentAngle) > maxRotateAngle || currentAngle > 0)
-                            return;
-                        // console.log("drag", ev);
                         var len = Math.ceil(scope.items.length / 2);
                         currentAngle = carouselRotateAngle + ev.gesture.deltaX / el[0].offsetWidth * ( minRotateAngle * len );
+                        
+                        //KC
+                        if(Math.abs(currentAngle) > maxRotateAngle) currentAngle = -maxRotateAngle;
+                        if(currentAngle > 0) currentAngle = 0;
+
                         isDragging = true;
                         setRotation(currentAngle);
                     }, el);
@@ -171,9 +173,6 @@ angular.module('morphCarousel', [])
 
                     function setRotation(angle) {
                         scope.$apply(function () {
-                            console.log('angle',angle);
-                            if(Math.abs(angle) > maxRotateAngle || angle > 0)
-                                return;
                             scope.carouselRotation = 'rotateY(' + angle + 'deg)';
                         });
                     }
